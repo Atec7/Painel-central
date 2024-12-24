@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="nome1">Gerenciador de Tarefas e Rotinas para Otmização de
+        Entregas Pessoal 
+        <p2 class="p3">....</p2>
+        <p2 class="p3">....</p2>
+        <p2 class="p3">....</p2>
+        <p2 class="p3">....</p2>
+        <p2 class="p3">....</p2>
+        <p2 class="p4">....</p2>
+        <p2 class="p5">....</p2>
+        <p2 class="p6">....</p2></h2>
+        <p class="nome"><b>
+          <img src="logo2.jpeg" width="70px"
+          style="
+          border-radius: 50%;
+          border: 5px solid white;
+          ">
+          
+                    <img src="logo2.jpg" width="70px"
+          style="
+          border-radius: 50%;
+          border: 5px solid white;
+          ">
+          <br>
+          •| Arnaldo S. Lima</b> - Analista de Perdas - Grupo
+        Partnership<br>
+          •| <span
+        id="dataHoraAtual"></span>
+      
+      <br>  •| www.grupopartnership.com.br
+        <br>
+              •| Unidade Rio Verde - GO<br> </p>
+
+        <button class="btnAtualizar" onclick="location.reload();"><b>Atualizar (F5)</b></button>
+        <a href="index.html">
+            <button class="btnBloquear"><b>Bloquear</b></button>
+        </a>
+          <a href="#">
+            <button class="btnEmail"><b>E-mail</b></button>
+        </a>
+        <a href="#">
+            <button class="btnTeams"><b>Teams</b></button>
+        </a>
+        <a href="https://atec7.github.io/Agenda/">
+            <button class="btnFinal"><b>Agenda</b></button>
+        </a>
+        <a href="https://atec7.github.io/Planejamentos-/">
+            <button class="btnFinal"><b>Planejamentos</b></button>
+        </a>
+        <a href="https://atec7.github.io/Anota-es/">
+            <button class="btnFinal"><b>Anotações</b></button>
+        </a>
+
+        <div class="main-content">
+            <form id="taskForm">
+                <label for="natureza"><b>Natureza:</b></label>
+                <select id="natureza" name="natureza">
+                    <option value="tarefa"><b>Tarefa</b></option>
+                    <option value="rotina">Rotina</option>
+                </select><br><br>
+
+                <label for="descricao"><b>Descrição:</b></label>
+                <input type="text" id="descricao" name="descricao"><br><br>
+
+                <label for="dataEntrega"><b>Data de Entrega:</b></label>
+                <input type="date" id="dataEntrega" name="dataEntrega"><br><br>
+
+                <label for="status"><b>Status:</b></label>
+                <select id="status" name="status">
+                    <option value="pendente">Pendente</option>
+                    <option value="andamento">Em Andamento</option>
+                    <option value="concluida">Concluída</option>
+                </select><br><br>
+
+                <label for="urgencia"><b>Urgência:</b></label>
+                <select id="urgencia" name="urgencia">
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Média</option>
+                    <option value="alta">Alta</option>
+                </select><br><br>
+
+                <button class="btn" type="button"
+                onclick="adicionarTarefa()"><b>Registrar</b></button>
+                <button class="btn" type="button" id="exportButton"
+                onclick="exportarParaExcel()"><b>Exportar para Excel</b></button>
+            </form>
+
+            <div class="graphs">
+                <h3>Apresentação Sintética</h3>
+                <div class="charts">
+                    <div class="chart-container">
+                        <canvas id="barChart" class="chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="pieChart" class="chart"></canvas>
+                    </div>
+                </div>
+                <!-- Contêiner de notificações -->
+                <div id="notificationContainer"></div>
+            </div>
+        </div>
+
+        <h3><b>Gestão de Entregas — Apresentação Analítica</b></h3>
+        
+        <div class="filter-container">
+            <label for="filterNatureza"><b>Filtrar por Natureza:</b></label>
+            <select class="filtro" id="filterNatureza" onchange="updateTable()">
+                <option value="todas">Todas</option>
+                <option value="tarefa">Tarefa</option>
+                <option value="rotina">Rotina</option>
+            </select>
+<section> 
+<legend>
+  <legend>
+  </legend>
+    <legend>
+  </legend>
+    <legend>
+  </legend>
+</legend></section>
+            <label for="searchDescricao"><b class="filtro">Pesquisar Descrição:</b></label>
+            <input class="filtro" type="text" id="searchDescricao" onkeyup="updateTable()" placeholder="Pesquisar...">
+        </div>
+
+        <div class="table-container">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th class="coluna">Natureza</th>
+                        <th class="coluna">Descrição</th>
+                        <th class="coluna">Data de Criação</th>
+                        <th class="coluna">Data de Entrega</th>
+                        <th class="coluna">Status</th>
+                        <th class="coluna">Urgência</th>
+                        <th class="coluna">Dias até Vencimento</th>
+                        <th class="coluna">Dias até Conclusão</th>
+                        <th class="coluna">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function atualizarDataHora() {
+            const dataHoraAtual = new Date();
+            const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+            document.getElementById('dataHoraAtual').innerHTML = dataHoraAtual.toLocaleDateString('pt-BR', opcoes);
+        }
+        setInterval(atualizarDataHora, 0000);
+    </script>
+</body>
+</html>
