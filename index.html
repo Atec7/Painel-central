@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><style>
+    /* Container de citações */
+    .quote-container {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        max-width: 800px;
+        height: 200px;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .quote {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 1s;
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        font-style: italic;
+        color: #555;
+    }
+
+    .quote.show {
+        opacity: 1;
+    }
+
+    /* Formulário de login */
+    .login-form {
+        position: relative;
+        top: 500px; /* Posição ajustada */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fade-in 1s ease-out;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        width: calc(100% - 40px);
+        margin: 10px 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form button {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 10px 20px;
+        padding: 10px;
+        background-color: #fd7e14;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .login-form button:hover {
+        background-color: #45a049;
+    }
+
+    .notification {
+        display: none;
+        color: red;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .notification.show {
+        display: block;
+    }
+
+    @media (max-width: 1024px) {
+        .quote-container,
+        .login-form {
+            width: 70%;
+        }
+
+        .quote-container {
+            height: 150px;
+        }
+
+        .login-form {
+            top: 550px; /* Ajustado para descer o formulário */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .quote-container,
+        .login-form {
+            width: 80%;
+        }
+
+        .quote-container {
+            height: 120px;
+        }
+
+        .login-form {
+            top: 600px; /* Ajustado para descer o formulário */
+        }
+    }
+</style>
+
+
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="quote-container">
+        <div class="quote" id="quote1">"A sorte favorece os audazes." - Virgílio</div>
+        <div class="quote" id="quote2">"A persistência é o caminho do êxito." - Charles Chaplin</div>
+        <div class="quote" id="quote3">"Grandes realizações são possíveis quando se dá importância aos pequenos começos." - Lao-Tsé</div>
+        <div class="quote" id="quote4">"Acredite em si próprio e todo o resto se encaixará." - Walt Disney</div>
+        <div class="quote" id="quote5">"A melhor maneira de prever o futuro é criá-lo." - Peter Drucker</div>
+        <div class="quote" id="quote6">"O único lugar onde o sucesso vem antes do trabalho é no dicionário." - Vidal Sassoon</div>
+        <div class="quote" id="quote7">"O fracasso é a oportunidade de começar de novo com mais inteligência." - Henry Ford</div>
+        <div class="quote" id="quote8">"As dificuldades muitas vezes preparam pessoas comuns para destinos extraordinários." - C.S. Lewis</div>
+        <div class="quote" id="quote9">"Quem ousa, vence." - Lema dos SAS (Special Air Service)</div>
+        <div class="quote" id="quote10">"Não importa o quão devagar você vá, desde que você não pare." - Confúcio</div>
+        <div class="quote" id="quote11">"A vida é 10% o que acontece comigo e 90% como eu reajo a isso." - Charles R. Swindoll</div>
+        <div class="quote" id="quote12">"Não conte os dias, faça os dias contarem." - Muhammad Ali</div>
+        <div class="quote" id="quote13">"O único limite para a nossa realização de amanhã são as nossas dúvidas de hoje." - Franklin D. Roosevelt</div>
+        <div class="quote" id="quote14">"O segredo do sucesso não é prever o futuro, mas criar uma organização capaz de prosperar em um futuro que não pode ser previsto." - Michael Hammer</div>
+        <div class="quote" id="quote15">"Seu tempo é limitado, então não o gaste vivendo a vida de outra pessoa." - Steve Jobs</div>
+        <div class="quote" id="quote16">"Você não pode mudar o vento, mas pode ajustar as velas do barco para chegar onde quer." - Confúcio</div>
+        <div class="quote" id="quote17">"A maior glória em viver não está em nunca cair, mas em nos levantarmos toda vez que caímos." - Nelson Mandela</div>
+        <div class="quote" id="quote18">"O sucesso não é a chave para a felicidade. A felicidade é a chave para o sucesso." - Albert Schweitzer</div>
+        <div class="quote" id="quote19">"A educação é a arma mais poderosa que você pode usar para mudar o mundo." - Nelson Mandela</div>
+        <div class="quote" id="quote20">"Não espere. O tempo nunca será o certo." - Napoleon Hill</div>
+        <div class="quote" id="quote21">"O sucesso não é definitivo, o fracasso não é fatal: é a coragem de continuar que conta." - Winston Churchill</div>
+        <div class="quote" id="quote22">"Se você quer viver uma vida feliz, amarre-se a uma meta, não às pessoas ou coisas." - Albert Einstein</div>
+        <div class="quote" id="quote23">"Não é o mais forte das espécies que sobrevive, nem o mais inteligente, mas o que melhor se adapta às mudanças." - Charles Darwin</div>
+        <div class="quote" id="quote24">"Os limites só existem se você os deixar existir." - Anônimo</div>
+        <div class="quote" id="quote25">"Você é a soma das cinco pessoas com quem passa mais tempo." - Jim Rohn</div>
+        <div class="quote" id="quote26">"O único modo de fazer um ótimo trabalho é amar o que você faz." - Steve Jobs</div>
+        <div class="quote" id="quote27">"O que você pensa, você se torna." - Buda</div>
+        <div class="quote" id="quote28">"A disciplina é a ponte entre metas e realizações." - Jim Rohn</div>
+        <div class="quote" id="quote29">"A verdadeira medida de um homem não é como ele se comporta em momentos de conforto e conveniência, mas como ele se mantém emvérsia e desafio." - Martin Luther King Jr.</div>
+        <div class="quote" id="quote30">"Os obstáculos são aquelas coisas medonhas que você vê quando tira os olhos do seu objetivo." - Henry Ford</div>
+    </div>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário"><br><br>
+        <input type="password" id="password" placeholder="Senha"><br><br>
+        <button onclick="login()">Entrar</button>
+        <div id="notification" class="notification">Usuário ou senha incorretos!</div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'Arnaldo' && password === '7777') {
+                window.location.href = 'painel.html';
+            } else {
+                document.getElementById('notification').classList.add('show');
+            }
+        }
+
+        function showQuotes() {
+            const quotes = document.querySelectorAll('.quote');
+            let currentIndex = 0;
+
+            setInterval(() => {
+                quotes.forEach((quote, index) => {
+                    quote.classList.toggle('show', index === currentIndex);
+                });
+
+                currentIndex = (currentIndex + 1) % quotes.length;
+            }, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', showQuotes);
+    </script>
+</body>
+</html>
