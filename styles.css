@@ -6,7 +6,7 @@ body {
     align-items: center;
     padding: 20px;
     margin: 0;
-    background-color: #f7f7f7;
+    background-color: #555;
     transition: background-color 0.3s ease;
 }
 
@@ -30,7 +30,7 @@ body.night-mode {
   background-color: #12345;
   border-radius: 10px;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   width: 400px;
   text-align: center;
   align-items: center;
